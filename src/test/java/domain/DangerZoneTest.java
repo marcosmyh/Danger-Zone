@@ -110,13 +110,13 @@ class DangerZoneTest {
     void testFaltaHabilidadRequerida() {
         marcos.habilidades().clear();
         pedro.habilidades().clear();
-        assertThrows(RuntimeException.class,() -> {duoLetal.cumplirMision(rescatarPresidente);});
+        assertThrows(RuntimeException.class,() -> duoLetal.cumplirMision(rescatarPresidente));
     }
 
     @Test
     @DisplayName("Cuando un equipo de 2 personas intenta resolver una mision con un objetivo peligroso, se prodce un error")
     void testObjetivoPeligroso() {
-        assertThrows(RuntimeException.class,() -> {duoLetal.cumplirMision(rescatarPresidente);});
+        assertThrows(RuntimeException.class,() -> duoLetal.cumplirMision(rescatarPresidente));
     }
 
     @Test

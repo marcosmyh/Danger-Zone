@@ -19,7 +19,7 @@ public class Equipo {
             this.reportarMisionCompletada(mision);
         }
         else{
-            throw new MisionCumplidaException();
+            throw new MisionCumplidaException("Esta misión ya se completó!");
         }
     }
 
