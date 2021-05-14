@@ -11,7 +11,7 @@ public class Empleado {
     //tipoEmpleado permite respetar el principio SOLID "Dependency Inversion"
     private TipoEmpleado tipoEmpleado;
     private int salud;
-    private List<Habilidad> habilidades = new ArrayList<>();
+    private List<Habilidad> habilidades;
     private int cantMisionesCompletadas = 0;
 
     public List<Habilidad> habilidades(){
@@ -22,6 +22,7 @@ public class Empleado {
         this.nombre = nombre;
         this.salud = salud;
         this.tipoEmpleado = tipoEmpleado;
+        this.habilidades = new ArrayList<>();
     }
 
     public void tipoEmpleado(TipoEmpleado tipoEmpleado){

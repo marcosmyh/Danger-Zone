@@ -8,7 +8,11 @@ import domain.equipo.equipoExceptions.MisionCumplidaException;
 import domain.mision.*;
 
 public class Equipo {
-    private List<Empleado> empleados = new ArrayList<>();
+    private List<Empleado> empleados;
+
+    public Equipo(){
+        this.empleados = new ArrayList<>();
+    }
 
     public boolean reuneHabilidadesRequeridas(Mision mision){
         return mision.objetivos().stream().allMatch(objetivo -> objetivo.tieneHabilidadRequerida(this));

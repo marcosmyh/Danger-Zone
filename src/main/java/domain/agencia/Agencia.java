@@ -6,7 +6,11 @@ import java.util.stream.Collectors;
 import domain.empleado.*;
 
 public class Agencia {
-    private List<Empleado> empleados = new ArrayList<>();
+    private List<Empleado> empleados;
+
+    public Agencia(){
+        this.empleados = new ArrayList<>();
+    }
 
     public int reputacion(){
         return empleadosVivos().stream().mapToInt(empleado -> empleado.experiencia()).sum();

@@ -8,7 +8,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Mision {
-    private List<Objetivo> objetivos = new ArrayList<>();
+    private List<Objetivo> objetivos;
+
+    public Mision(){
+        this.objetivos = new ArrayList<>();
+    }
 
     public void agregarObjetivos(Objetivo ... objetivos){
         Collections.addAll(this.objetivos, objetivos);
