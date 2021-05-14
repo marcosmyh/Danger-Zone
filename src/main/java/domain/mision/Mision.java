@@ -2,26 +2,20 @@ package domain.mision;
 
 import java.util.ArrayList;
 import domain.objetivo.*;
+
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Mision {
     private List<Objetivo> objetivos = new ArrayList<>();
 
-    public void agregarObjetivos(Objetivo objetivo){
-        objetivos.add(objetivo);
-    }
-
-    public Mision(){
-
+    public void agregarObjetivos(Objetivo ... objetivos){
+        Collections.addAll(this.objetivos, objetivos);
     }
 
     public String ultimaHabilidadRequerida(){
         return this.habilidadesRequeridas().stream().reduce((first, second) -> second).orElse(null);
-    }
-
-    public Mision(List<Objetivo> objetivos){
-        this.objetivos = objetivos;
     }
 
     public List<Objetivo> objetivos(){

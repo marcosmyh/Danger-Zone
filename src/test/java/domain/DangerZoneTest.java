@@ -37,13 +37,10 @@ class DangerZoneTest {
         pedro.aprenderHabilidad(destreza);
         juan.aprenderHabilidad(agilidad);
 
-        equipo.agregarEmpleado(marcos);
-        equipo.agregarEmpleado(juan);
-        duoLetal.agregarEmpleado(marcos);
-        duoLetal.agregarEmpleado(pedro);
+        equipo.agregarEmpleados(marcos, juan);
+        duoLetal.agregarEmpleados(marcos, pedro);
 
-        rescatarPresidente.agregarObjetivos(infiltrarse);
-        rescatarPresidente.agregarObjetivos(luchar);
+        rescatarPresidente.agregarObjetivos(infiltrarse, luchar);
         hackearNasa.agregarObjetivos(infiltrarse);
     }
 
@@ -140,7 +137,7 @@ class DangerZoneTest {
     @DisplayName("Luego de resolver un objetivo peligroso, el integrante que posea la habilidad requerida sufre un daño equivalente a la peligrosidad")
     void testImpactoObjetivoPeligroso(){
         int saludInicial = juan.salud();
-        equipo.agregarEmpleado(pedro);
+        equipo.agregarEmpleados(pedro);
         equipo.cumplirMision(rescatarPresidente);
         assertNotEquals(juan.salud(),saludInicial);
     }
@@ -149,7 +146,7 @@ class DangerZoneTest {
     @DisplayName("Luego de completar una mision, un espia aprende la ultima habilida requerida por la misma")
     void testMisionEspia() {
         //Inicialmente juan sólo tiene agilidad.
-        equipo.agregarEmpleado(pedro);
+        equipo.agregarEmpleados(pedro);
         equipo.cumplirMision(hackearNasa);
         assertTrue(juan.tieneHabilidad(hackearNasa.ultimaHabilidadRequerida()));    
     }
@@ -157,7 +154,7 @@ class DangerZoneTest {
     @Test
     @DisplayName("El valor que aporta una habilidad es igual a la longitud del nombre de la misma mas la cantidad de usos que le hayan dado")
     void testAporteHabilidad() {
-        equipo.agregarEmpleado(pedro);
+        equipo.agregarEmpleados(pedro);
         equipo.cumplirMision(hackearNasa);
         assertEquals(destreza.aporte(),3*destreza.cantUsos() + destreza.longitudNombre());
     }    

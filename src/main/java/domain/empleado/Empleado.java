@@ -14,10 +14,6 @@ public class Empleado {
     private List<Habilidad> habilidades = new ArrayList<>();
     private int cantMisionesCompletadas = 0;
 
-    public Empleado(){
-
-    }
-
     public List<Habilidad> habilidades(){
         return habilidades;
     }
@@ -37,7 +33,7 @@ public class Empleado {
     }
 
     public void incrementarUsoHabilidad(String nombreHabilidad){
-        Habilidad habilidadAIncrementar = habilidades.stream().filter(habilidad -> habilidad.nombreHabilidad() == nombreHabilidad).findFirst().get();  
+        Habilidad habilidadAIncrementar = habilidades.stream().filter(h -> h.nombreHabilidad().equals(nombreHabilidad)).findFirst().get();
         habilidadAIncrementar.aumentarCantUsos();
     }
 

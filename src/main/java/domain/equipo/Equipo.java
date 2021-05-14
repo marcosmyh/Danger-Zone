@@ -1,5 +1,6 @@
 package domain.equipo;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 import domain.empleado.*;
@@ -23,8 +24,8 @@ public class Equipo {
         }
     }
 
-    public void agregarEmpleado(Empleado empleado){
-        empleados.add(empleado);
+    public void agregarEmpleados(Empleado ... empleados){
+        Collections.addAll(this.empleados, empleados);
     }
 
     public void reportarMisionCompletada(Mision mision){
