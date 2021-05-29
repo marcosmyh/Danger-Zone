@@ -18,13 +18,13 @@ public class Objetivo {
     }
 
     public boolean puedeCumplirObjetivo(Equipo equipo){
-        return this.tieneHabilidadRequerida(equipo);
+        return tieneHabilidadRequerida(equipo);
     }
 
     public void cumplirObjetivo(Equipo equipo){
-        if (this.puedeCumplirObjetivo(equipo)){
+        if (puedeCumplirObjetivo(equipo)){
             seCumplio = true;
-            this.aumentarUsosHabilidadRequerida(equipo);
+            aumentarUsosHabilidadRequerida(equipo);
         }
         else{
             throw new ObjetivoException("No se pudo cumplir el objetivo porque nadie tiene la habilidad " + habilidadRequerida.nombreHabilidad());
@@ -32,8 +32,8 @@ public class Objetivo {
     }
 
     public void aumentarUsosHabilidadRequerida(Equipo equipo){
-        Empleado empleadoConHabilidadRequerida = equipo.quienPuedeUsarHabilidad(this.nombreHabilidadRequerida());
-        empleadoConHabilidadRequerida.incrementarUsoHabilidad(this.nombreHabilidadRequerida());
+        Empleado empleadoConHabilidadRequerida = equipo.quienPuedeUsarHabilidad(nombreHabilidadRequerida());
+        empleadoConHabilidadRequerida.incrementarUsoHabilidad(nombreHabilidadRequerida());
     }
 
     public String nombreHabilidadRequerida(){
@@ -41,6 +41,6 @@ public class Objetivo {
     }
 
     public boolean tieneHabilidadRequerida(Equipo equipo){
-        return equipo.alguienPuedeUsarHabilidadRequerida(this.nombreHabilidadRequerida());
+        return equipo.alguienPuedeUsarHabilidadRequerida(nombreHabilidadRequerida());
     }
 }

@@ -13,10 +13,6 @@ public class Espia implements TipoEmpleado {
     }
 
     public int experienciaEnElPuesto(Empleado empleado){
-        return this.valorQueAportanHabilidades(empleado);
-    }
-
-    public int valorQueAportanHabilidades(Empleado empleado){
-        return empleado.habilidades().stream().mapToInt(habilidad -> habilidad.aporte()).sum();
+        return empleado.valorQueAportanHabilidades();
     }
 }

@@ -13,7 +13,7 @@ public class Habilidad {
     }
 
     public int aporte(){
-        return 3*cantUsos + this.longitudNombre();
+        return 3*cantUsos + longitudNombre();
     }
 
     public int longitudNombre(){

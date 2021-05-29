@@ -19,9 +19,9 @@ public class Equipo {
     }
 
     public void cumplirMision(Mision mision){
-        if(!this.seCumplio(mision)){
-            this.cumplirObjetivos(mision);
-            this.reportarMisionCompletada(mision);
+        if(!seCumplio(mision)){
+            cumplirObjetivos(mision);
+            reportarMisionCompletada(mision);
         }
         else{
             throw new MisionCumplidaException("Esta misión ya se completó!");

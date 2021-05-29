@@ -8,7 +8,6 @@ import domain.mision.*;
 
 public class Empleado {
     private String nombre;
-    //tipoEmpleado permite respetar el principio SOLID "Dependency Inversion"
     private TipoEmpleado tipoEmpleado;
     private int salud;
     private List<Habilidad> habilidades;
@@ -55,14 +54,14 @@ public class Empleado {
     }
 
     public void reportarMisionCompletada(Mision mision){
-        if(this.estaVivo()){
+        if(estaVivo()){
             tipoEmpleado.reportarMisionCompletada(this,mision);
-            this.misionCompletada();
+            misionCompletada();
         }
     }
 
     public boolean estaIncapacitado(){
-        return salud < this.saludCritica();
+        return salud < saludCritica();
     }
 
     public void misionCompletada(){
@@ -72,14 +71,13 @@ public class Empleado {
     public void aprenderUltimaHabilidadRequerida(Mision mision){
         String nombreUltimaHabilidadRequerida = mision.ultimaHabilidadRequerida();
 
-        if(!this.tieneHabilidad(nombreUltimaHabilidadRequerida)){
-            Habilidad habilidad = new Habilidad(nombreUltimaHabilidadRequerida);
-            this.aprenderHabilidad(habilidad);
+        if(!tieneHabilidad(nombreUltimaHabilidadRequerida)){
+            aprenderHabilidad(new Habilidad(nombreUltimaHabilidadRequerida));
         }
     }
 
     public boolean estaVivo(){
-        return this.salud > 0;
+        return salud > 0;
     }
 
     public String nombre(){
@@ -91,15 +89,19 @@ public class Empleado {
     }
 
     public List<String> nombreHabilidades(){
-        return habilidades.stream().map(habilidad -> habilidad.nombreHabilidad()).collect(Collectors.toList());
+        return habilidades.stream().map(Habilidad::nombreHabilidad).collect(Collectors.toList());
     }
 
     public boolean tieneHabilidad(String nombreHabilidad){
-        return this.nombreHabilidades().contains(nombreHabilidad);
+        return nombreHabilidades().contains(nombreHabilidad);
     }
 
     public boolean puedeUsarHabilidad(String nombreHabilidad){
-        return !this.estaIncapacitado() && this.tieneHabilidad(nombreHabilidad);
+        return !estaIncapacitado() && tieneHabilidad(nombreHabilidad);
+    }
+
+    public int valorQueAportanHabilidades(){
+        return habilidades.stream().mapToInt(Habilidad::aporte).sum();        
     }
 
     public int saludCritica(){

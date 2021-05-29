@@ -2,6 +2,7 @@ package domain.mision;
 
 import java.util.ArrayList;
 import domain.objetivo.*;
+import domain.equipo.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -19,7 +20,7 @@ public class Mision {
     }
 
     public String ultimaHabilidadRequerida(){
-        return this.habilidadesRequeridas().stream().reduce((first, second) -> second).orElse(null);
+        return habilidadesRequeridas().stream().reduce((first, second) -> second).orElse(null);
     }
 
     public List<Objetivo> objetivos(){
@@ -27,7 +28,7 @@ public class Mision {
     }
 
     public List<String> habilidadesRequeridas(){
-        return objetivos.stream().map(objetivo -> objetivo.nombreHabilidadRequerida()).collect(Collectors.toList());
+        return objetivos.stream().map(Objetivo::nombreHabilidadRequerida).collect(Collectors.toList());
     }
 
     public List<Objetivo> objetivosPendientes(){
@@ -35,6 +36,6 @@ public class Mision {
     }
 
     public boolean hayObjetivosPendientes(){
-        return !this.objetivosPendientes().isEmpty();
+        return !objetivosPendientes().isEmpty();
     }
 }

@@ -13,18 +13,18 @@ public class Agencia {
     }
 
     public int reputacion(){
-        return empleadosVivos().stream().mapToInt(empleado -> empleado.experiencia()).sum();
+        return empleadosVivos().stream().mapToInt(Empleado::experiencia).sum();
     }
 
     public List<Empleado> empleadosVivos(){
-        return empleados.stream().filter(empleado -> empleado.estaVivo()).collect(Collectors.toList());
+        return empleados.stream().filter(Empleado::estaVivo).collect(Collectors.toList());
     }
 
     public int diferenciaReputacionCon(Agencia unaAgencia){
-        return Math.abs(this.reputacion() - unaAgencia.reputacion());
+        return Math.abs(reputacion() - unaAgencia.reputacion());
     }
 
     public boolean leHaceCompetencia(Agencia unaAgencia){
-        return unaAgencia != this && this.diferenciaReputacionCon(unaAgencia) < 10;
+        return unaAgencia != this && diferenciaReputacionCon(unaAgencia) < 10;
     }
 }

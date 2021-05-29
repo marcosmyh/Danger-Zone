@@ -84,8 +84,7 @@ class DangerZoneTest {
     @Test
     @DisplayName("La experiencia de un espia equivale a la cantidad de misiones completadas mas el valor que aportan sus habilidades")
     void testExperienciaEspia() {
-        int valorQueAportanHabilidades = ((Espia) pedro.tipoEmpleado()).valorQueAportanHabilidades(pedro);
-        assertEquals(pedro.experiencia(),pedro.cantMisionesCompletadas() + valorQueAportanHabilidades);
+        assertEquals(pedro.experiencia(),pedro.cantMisionesCompletadas() + pedro.valorQueAportanHabilidades());
     }
 
     @Test

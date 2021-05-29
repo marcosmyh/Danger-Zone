@@ -6,13 +6,13 @@ public class Oficinista implements TipoEmpleado {
     private int cantEstrellas = 0;
 
     public int saludCritica(){
-        return 40 - 5*this.cantEstrellas;
+        return 40 - 5*cantEstrellas;
     }
 
     public void reportarMisionCompletada(Empleado empleado,Mision mision){
         cantEstrellas += 1;
-        if(this.puedeAscender()){
-            this.ascender(empleado);
+        if(puedeAscender()){
+            ascender(empleado);
         }
     }
 

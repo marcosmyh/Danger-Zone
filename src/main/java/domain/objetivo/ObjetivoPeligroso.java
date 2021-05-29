@@ -22,13 +22,13 @@ public class ObjetivoPeligroso extends Objetivo {
     }
 
     @Override public boolean puedeCumplirObjetivo(Equipo equipo){
-        return super.puedeCumplirObjetivo(equipo) && this.tieneCantidadIntegrantesNecesarios(equipo);
+        return super.puedeCumplirObjetivo(equipo) && tieneCantidadIntegrantesNecesarios(equipo);
     }
 
     @Override public void cumplirObjetivo(Equipo equipo){
-        if(this.puedeCumplirObjetivo(equipo)){
+        if(puedeCumplirObjetivo(equipo)){
             super.cumplirObjetivo(equipo);
-            this.causarDanio(equipo);
+            causarDanio(equipo);
         }
         else{
             throw new ObjetivoException("No se pudo cumplir un objetivo. Faltan integrantes!");
@@ -36,7 +36,7 @@ public class ObjetivoPeligroso extends Objetivo {
     }
 
     public void causarDanio(Equipo equipo){
-        Empleado empleadoConHabilidadRequerida = equipo.quienPuedeUsarHabilidad(this.nombreHabilidadRequerida());
+        Empleado empleadoConHabilidadRequerida = equipo.quienPuedeUsarHabilidad(nombreHabilidadRequerida());
         empleadoConHabilidadRequerida.recibirDanio(peligrosidad);
     }
 }
